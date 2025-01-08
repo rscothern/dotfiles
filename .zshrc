@@ -48,3 +48,6 @@ MAILCHECK=0
 # User specific aliases and functions for all shells
 export EDITOR=emacs
 export HOST=$(hostname)
+
+autoload -U select-word-style
+select-word-style bash
