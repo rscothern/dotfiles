@@ -11,9 +11,11 @@ compinit
 setopt COMPLETE_IN_WORD
 
 ## keep background processes at full speed
-#setopt NOBGNICE
+setopt NOBGNICE
 ## restart running processes on exit
 #setopt HUP
+
+setopt PROMPT_SUBST
 
 ## history
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
@@ -51,3 +53,18 @@ export HOST=$(hostname)
 
 autoload -U select-word-style
 select-word-style bash
+
+function quotify()
+{
+    if [ "x$1" = "x-" ]; then
+        cat;
+    else
+        cat $1| sed 's/^\|$/"/g'|paste -sd,
+    fi
+}
+
+alias pst='ps faxo stat,euid,ruid,tty,tpgid,sess,pgrp,ppid,pid,pcpu,comm'
+alias cp='cp --backup=numbered'
+alias ln='ln --backup=numbered'
+alias mv='mv -f --backup=numbered'
+alias now="date +%s"
