@@ -68,3 +68,4 @@ alias cp='cp --backup=numbered'
 alias ln='ln --backup=numbered'
 alias mv='mv -f --backup=numbered'
 alias now="date +%s"
+alias ll='ls -l'
